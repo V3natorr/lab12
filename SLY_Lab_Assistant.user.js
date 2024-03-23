@@ -6,9 +6,9 @@
 // @author       SLY w/ Contributions by SkyLove512, anthonyra, niofox
 // @match        https://*.labs.staratlas.com/
 // @require      https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js
-// @require      https://raw.githubusercontent.com/ImGroovin/SAGE-Lab-Assistant/main/anchor-browserified.js
-// @require      https://raw.githubusercontent.com/ImGroovin/SAGE-Lab-Assistant/main/buffer-browserified.js
-// @require      https://raw.githubusercontent.com/ImGroovin/SAGE-Lab-Assistant/main/bs58-browserified.js
+// @require      https://raw.githubusercontent.com/V3natorr/lab12/main/anchor-browserified.js
+// @require      https://raw.githubusercontent.com/V3natorr/lab12/main/buffer-browserified.js
+// @require      https://raw.githubusercontent.com/V3natorr/lab12/main/bs58-browserified.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=staratlas.com
 // @grant        GM_setValue
 // @grant        GM_getValue
@@ -20,13 +20,13 @@
 
 	//Used for reading solana data
 	let readRPCs = [
-		'https://rpc.hellomoon.io/cfd5910f-fb7d-4489-9b32-f97193eceefd',
+		'https://rpc.hellomoon.io/f6593a92-0f58-42c2-924d-539abc400c73',
 		'https://solana-api.syndica.io/access-token/WPoEqWQ2auQQY1zHRNGJyRBkvfOLqw58FqYucdYtmy8q9Z84MBWwqtfVf8jKhcFh/rpc',
 	];
 
 	//Used for pushing transactions to solana chain
 	let writeRPCs = [
-		'https://rpc.hellomoon.io/cfd5910f-fb7d-4489-9b32-f97193eceefd',
+		'https://rpc.hellomoon.io/f6593a92-0f58-42c2-924d-539abc400c73',
 		'https://solana-api.syndica.io/access-token/WPoEqWQ2auQQY1zHRNGJyRBkvfOLqw58FqYucdYtmy8q9Z84MBWwqtfVf8jKhcFh/rpc',
 	];
 
@@ -89,7 +89,7 @@
 		globalSettings = JSON.parse(rawSettingsData);
 		globalSettings = {
 			// Priority Fee added to each transaction in Lamports. Set to 0 (zero) to disable priority fees. 1 Lamport = 0.000000001 SOL
-			priorityFee: parseIntDefault(globalSettings.priorityFee, 1),
+			priorityFee: parseIntDefault(globalSettings.priorityFee, 650),
 
 			//How many milliseconds to wait before re-reading the chain for confirmation
 			confirmationCheckingDelay: parseIntDefault(globalSettings.confirmationCheckingDelay, 200),
@@ -128,10 +128,10 @@
 			statusPanelOpacity: parseIntDefault(globalSettings.statusPanelOpacity, 75),
 
 			//Should assistant automatically start after initialization is complete?
-			autoStartScript: parseBoolDefault(globalSettings.autoStartScript, false),
+			autoStartScript: parseBoolDefault(globalSettings.autoStartScript, true),
 
 			//How many fleets need to stall before triggering an automatic page reload? (0 = never trigger)		
-			reloadPageOnFailedFleets: parseIntDefault(globalSettings.reloadPageOnFailedFleets, 0),
+			reloadPageOnFailedFleets: parseIntDefault(globalSettings.reloadPageOnFailedFleets, 1),
 		}
 
 		cLog(2, 'SYSTEM: Global Settings loaded', globalSettings);
